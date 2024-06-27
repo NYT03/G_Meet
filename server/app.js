@@ -1,7 +1,10 @@
 const express = require('express')
+// const {createMeetingId} = require('./meeting.cjs');
+const createMeetingId = require('./mongoDb');
 const app = express()
 const port = 3000
 const path = require('path');
 app.use(express.static(path.join(__dirname,"")))
-app.get('/', (req, res) => res.send('Hello World!'))
+
+app.get('/', (req, res) => res.send(createMeetingId()))
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
